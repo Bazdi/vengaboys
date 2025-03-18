@@ -11,6 +11,7 @@
 #include "jax.hpp"
 #include "ordermanager.hpp"
 #include <limits>
+#include "champion_spell_names.hpp"
 
 namespace vengaboys {
     Settings settings;
@@ -685,12 +686,14 @@ namespace vengaboys {
 
         auto combat = menu->add_sub_category("combat", "Combat Settings");
         if (combat) {
-            combat->add_checkbox("use_q", "Use Q", settings.use_q, [&](bool value) { settings.use_q = value; });
-            combat->add_checkbox("use_w", "Use W", settings.use_w, [&](bool value) { settings.use_w = value; });
-            combat->add_checkbox("use_e", "Use E", settings.use_e, [&](bool value) { settings.use_e = value; });
-            combat->add_checkbox("use_r", "Use R", settings.use_r, [&](bool value) { settings.use_r = value; });
+            // Add "Q - ", "W - ", etc. here, in the menu code, *not* in the library.
+            combat->add_checkbox("use_q", "Q - " + champion_spell_names::get_champion_q_name("Jax"), settings.use_q, [&](bool value) { settings.use_q = value; });
+            combat->add_checkbox("use_w", "W - " + champion_spell_names::get_champion_w_name("Jax"), settings.use_w, [&](bool value) { settings.use_w = value; });
+            combat->add_checkbox("use_e", "E - " + champion_spell_names::get_champion_e_name("Jax"), settings.use_e, [&](bool value) { settings.use_e = value; });
+            combat->add_checkbox("use_r", "R - " + champion_spell_names::get_champion_r_name("Jax"), settings.use_r, [&](bool value) { settings.use_r = value; });
 
-            auto q_settings = combat->add_sub_category("q_settings", "Q Settings");
+
+            auto q_settings = combat->add_sub_category("q_settings", ("Q - " + champion_spell_names::get_champion_q_name("Jax") + " Settings").c_str());
             if (q_settings) {
                 q_settings->add_checkbox("q_prio_low_hp", "Prioritize Low HP", settings.q_prioritize_low_hp,
                     [&](bool value) { settings.q_prioritize_low_hp = value; });
@@ -702,7 +705,7 @@ namespace vengaboys {
                     [&](bool value) { settings.q_under_turret = value; });
             }
 
-            auto w_settings = combat->add_sub_category("w_settings", "W Settings");
+            auto w_settings = combat->add_sub_category("w_settings", ("W - " + champion_spell_names::get_champion_w_name("Jax") + " Settings").c_str());
             if (w_settings) {
                 w_settings->add_checkbox("w_auto_reset", "Auto Reset Attack", settings.w_auto_reset,
                     [&](bool value) { settings.w_auto_reset = value; });
@@ -710,7 +713,7 @@ namespace vengaboys {
                     [&](float value) { settings.w_min_mana = value; });
             }
 
-            auto e_settings = combat->add_sub_category("e_settings", "E Settings");
+            auto e_settings = combat->add_sub_category("e_settings", ("E - " + champion_spell_names::get_champion_e_name("Jax") + " Settings").c_str());
             if (e_settings) {
                 e_settings->add_slider_float("e_recast_delay", "Recast Delay", 0.5f, 2.5f, 0.1f, settings.e_recast_time,
                     [&](float value) { settings.e_recast_time = value; });
@@ -720,7 +723,7 @@ namespace vengaboys {
                     [&](float value) { settings.e_lethal_aa_hp_threshold = value; });
             }
 
-            auto r_settings = combat->add_sub_category("r_settings", "R Settings");
+            auto r_settings = combat->add_sub_category("r_settings", ("R - " + champion_spell_names::get_champion_r_name("Jax") + " Settings").c_str());
             if (r_settings) {
                 r_settings->add_checkbox("r_use_defensive", "Use Defensively", settings.r_use_defensive,
                     [&](bool value) { settings.r_use_defensive = value; });
@@ -736,11 +739,11 @@ namespace vengaboys {
 
         auto harass = menu->add_sub_category("harass", "Harass Settings");
         if (harass) {
-            harass->add_checkbox("harass_use_q", "Use Q", settings.harass_use_q,
+            harass->add_checkbox("harass_use_q", champion_spell_names::get_champion_q_name("Jax"), settings.harass_use_q,
                 [&](bool value) { settings.harass_use_q = value; });
-            harass->add_checkbox("harass_use_w", "Use W", settings.harass_use_w,
+            harass->add_checkbox("harass_use_w", champion_spell_names::get_champion_w_name("Jax"), settings.harass_use_w,
                 [&](bool value) { settings.harass_use_w = value; });
-            harass->add_checkbox("harass_use_e", "Use E", settings.harass_use_e,
+            harass->add_checkbox("harass_use_e", champion_spell_names::get_champion_e_name("Jax"), settings.harass_use_e,
                 [&](bool value) { settings.harass_use_e = value; });
             harass->add_slider_float("harass_min_mana", "Minimum Mana %", 0.f, 100.f, 1.f, settings.harass_min_mana,
                 [&](float value) { settings.harass_min_mana = value; });
@@ -749,11 +752,11 @@ namespace vengaboys {
         }
         auto farm = menu->add_sub_category("farm", "Farm Settings");
         if (farm) {
-            farm->add_checkbox("farm_use_q", "Use Q", settings.farm_use_q,
+            farm->add_checkbox("farm_use_q", champion_spell_names::get_champion_q_name("Jax"), settings.farm_use_q,
                 [&](bool value) { settings.farm_use_q = value; });
-            farm->add_checkbox("farm_use_w", "Use W", settings.farm_use_w,
+            farm->add_checkbox("farm_use_w", champion_spell_names::get_champion_w_name("Jax"), settings.farm_use_w,
                 [&](bool value) { settings.farm_use_w = value; });
-            farm->add_checkbox("farm_use_e", "Use E", settings.farm_use_e,
+            farm->add_checkbox("farm_use_e", champion_spell_names::get_champion_e_name("Jax"), settings.farm_use_e,
                 [&](bool value) { settings.farm_use_e = value; });
             farm->add_slider_float("farm_min_mana", "Minimum Mana %", 0.f, 100.f, 1.f, settings.farm_min_mana,
                 [&](float value) { settings.farm_min_mana = value; });

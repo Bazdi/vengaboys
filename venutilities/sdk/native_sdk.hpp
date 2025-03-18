@@ -4,7 +4,7 @@
 #include <memory>
 #include <string>
 #include <span>
-#include <map>
+
 #include "math.hpp"
 
 enum class module_type : uint8_t
@@ -682,7 +682,7 @@ public:
 
 	virtual bool get_height_precise_drawings_state() = 0;
 
-	virtual std::map< uint32_t, char* > get_buffs_hash_map() = 0;
+	std::map< uint32_t, char* > get_buffs_hash_map() = 0;
 };
 
 inline core_sdk* g_sdk = nullptr;

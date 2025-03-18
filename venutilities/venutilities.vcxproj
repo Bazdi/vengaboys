@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b62fbd79-9f00-4440-851c-a85d0d1a871c}</ProjectGuid>
-    <RootNamespace>vengaboys</RootNamespace>
+    <ProjectGuid>{19dbe61b-128d-42ca-a55b-fc91b111d336}</ProjectGuid>
+    <RootNamespace>venutilities</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,36 +139,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Aphelios.cpp" />
-    <ClCompile Include="champion_spell_names.cpp" />
-    <ClCompile Include="Jax.cpp" />
-    <ClCompile Include="Jhin.cpp" />
-    <ClCompile Include="Karthus.cpp" />
+    <ClCompile Include="BuffHashLogger.cpp" />
+    <ClCompile Include="CassUltTurn.cpp" />
+    <ClCompile Include="FiddleTracker.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Nocturne.cpp" />
     <ClCompile Include="OrderManager.cpp" />
-    <ClCompile Include="Riven.cpp" />
-    <ClCompile Include="Teemo.cpp" />
-    <ClCompile Include="Teemo.hpp" />
-    <ClCompile Include="teemo_spots.hpp" />
-    <ClCompile Include="Varus.cpp" />
-    <ClCompile Include="Velkoz.cpp" />
-    <ClCompile Include="XinZhao.cpp" />
-    <ClCompile Include="Zeri.cpp" />
+    <ClCompile Include="SmiteUtility.cpp" />
+    <ClCompile Include="TryndaWPreventSlow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Aphelios.hpp" />
-    <ClInclude Include="champion_spell_names.hpp" />
-    <ClInclude Include="Jax.hpp" />
-    <ClInclude Include="Jhin.hpp" />
-    <ClInclude Include="Karthus.hpp" />
-    <ClInclude Include="Nocturne.hpp" />
+    <ClInclude Include="BuffHashLogger.hpp" />
+    <ClInclude Include="CassUltTurn.hpp" />
+    <ClInclude Include="FiddleTracker.hpp" />
     <ClInclude Include="OrderManager.hpp" />
-    <ClInclude Include="Riven.hpp" />
-    <ClInclude Include="Varus.hpp" />
-    <ClInclude Include="Velkoz.hpp" />
-    <ClInclude Include="XinZhao.hpp" />
-    <ClInclude Include="Zeri.hpp" />
+    <ClInclude Include="SmiteUtility.hpp" />
+    <ClInclude Include="TryndaWPreventSlow.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
